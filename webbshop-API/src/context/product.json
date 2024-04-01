@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Men's T-Shirt",
+    "color": ["Black", "White", "Blue", "Grey"],
+    "size": ["S", "M", "L", "XL"],
+    "price": "350",
+    "stock": "35"
+  },
+  {
+    "id": 2,
+    "title": "Women's Hoodie",
+    "color": ["Black", "White", "Blue", "Grey"],
+    "size": ["S", "M", "L", "XL"],
+    "price": "400",
+    "stock": "19"
+
+  },
+  {
+    "id": 3,
+    "title": "Unisex Shirt",
+    "color": ["Black", "White", "Blue", "Grey"],
+    "size": ["S", "M", "L", "XL"],
+    "price": "550",
+    "stock": "29"
+  },
+  {
+    "id": 4,
+    "title": "Kids' Backpack",
+    "color": ["Black", "White", "Blue", "Grey"],
+    "size": "One Size",
+    "price": "200",
+    "stock": "37"
+  },
+  {
+    "id": 5,
+    "title": "Sweat Pants",
+    "color": ["Black", "White", "Blue", "Grey"],
+    "size": ["S", "M", "L", "XL"],
+    "price": "150",
+    "stock": "23"
+  }
+]
