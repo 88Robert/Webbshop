@@ -25,5 +25,10 @@
     "id": "5",
     "email": "hej@htoamil.com",
     "password": "666"
+  },
+  {
+    "id": "6",
+    "email": "robmag@bob",
+    "password": "888"
   }
 ]

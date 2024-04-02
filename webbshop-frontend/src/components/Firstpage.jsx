@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import SearchBar from "./Searchbar";
+import { APIContext } from "./BackendAPI"; // Replace 'YourContextProviderFile' with the actual file name
 
 const Firstpage = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/");
-      if (!response.ok) {
-        throw new Error("Failed to fetch products");
-      }
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { products } = useContext(APIContext); // Accessing products from the context provider
 
   return (
     <div>

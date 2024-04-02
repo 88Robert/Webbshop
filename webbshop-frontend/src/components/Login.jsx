@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { APIContext } from "./BackendAPI"; // Replace 'YourContextProviderFile' with the actual file name
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  const { login, register } = useContext(APIContext); // Accessing login and register functions from the context provider
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -12,21 +15,8 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
-        setMessage("Login successful");
-      } else {
-        setMessage(data.message);
-      }
+      await login(email, password); // Using login function from context provider
+      setMessage("Login successful");
     } catch (error) {
       console.error("Error:", error);
       setMessage("Error occurred during login");
@@ -40,20 +30,8 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("User registered successfully");
-      } else {
-        setMessage(data.message);
-      }
+      await register(email, password); // Using register function from context provider
+      alert("User registered successfully");
     } catch (error) {
       console.error("Error:", error);
       setMessage("Error occurred during registration");

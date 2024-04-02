@@ -5,11 +5,14 @@ import Firstpage from "./Firstpage";
 import Login from "./Login";
 import Navbar from "./Navbar";
 import Shop from "./Shop";
+import { BackendAPI } from "./BackendAPI";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
+    <div>
+      <BackendAPI>
     <Router>
       <Navbar />
       <Routes>
@@ -18,6 +21,9 @@ function App() {
         <Route path="/Cart" element={<Shop />} />
       </Routes>
     </Router>
+    </BackendAPI>
+    
+    </div>
   );
 }
 

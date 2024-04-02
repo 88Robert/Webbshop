@@ -1,8 +1,7 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-const APIContext = createContext();
+export const APIContext = createContext();
 
-export const useUser = () => useContext(APIContext);
 
 export const BackendAPI = ({ children }) => {
   const [user, setUser] = useState(null);
