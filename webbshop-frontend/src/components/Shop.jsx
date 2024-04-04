@@ -1,27 +1,65 @@
-import React, { useState } from 'react';
+import React, { useContext } from "react";
+import { APIContext } from "./BackendAPI";
 
-const Shop = ({ product, onAddToCart }) => {
-  const [quantity, setQuantity] = useState(1);
+const Shop = () => {
+  const { cart, setCart, products, setProducts, addOrder } =
+    useContext(APIContext);
+  console.log("Context value", { cart, products });
 
-  const handleQuantityChange = (event) => {
-    setQuantity(parseInt(event.target.value));
+  const removeFromCart = (productId) => {
+    const removedItem = cart.find((item) => item.id === productId);
+    if (!removedItem) return;
+
+    const removedQuantity = cart.filter((item) => item.id === productId).length;
+
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+
+    const updatedProducts = products.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          stock: product.stock + removedQuantity,
+        };
+      }
+      return product;
+    });
+    console.log("Updated products:", updatedProducts);
+
+    // Update the products state with updated stock
+    setProducts(updatedProducts);
+
+    // Update the products in localStorage with updated stock
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+
+    console.log("localStorage:", localStorage.getItem("products"));
   };
 
-  const handleAddToCart = () => {
-    onAddToCart(product, quantity);
-    setQuantity(1); // Reset quantity to 1 after adding to cart
+  const handlePurchase = () => {
+    addOrder();
   };
 
   return (
     <div>
-      <p>Product</p>
-      <input
-        type="number"
-        value={quantity}
-        min="1"
-        onChange={handleQuantityChange}
-      />
-      <button onClick={handleAddToCart}>Add to Cart</button>
+      <h2>Cart</h2>
+      {cart.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <ul>
+          {cart.map((item) => (
+            <li key={item.id}>
+              <span>{item.title}</span>
+              <p>Price: {item.price}</p>
+              <p>Color: {item.selectedColor}</p>
+              <p>Size: {item.selectedSize}</p>
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              <br />
+              <br />
+              <button onClick={handlePurchase}>Purchase</button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
