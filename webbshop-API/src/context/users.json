@@ -35,5 +35,10 @@
     "id": "7",
     "email": "jensen@hej",
     "password": "123"
+  },
+  {
+    "id": "8",
+    "email": "robban@skåne",
+    "password": "666"
   }
 ]

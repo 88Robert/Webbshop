@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { APIContext } from "./BackendAPI"; // Replace 'YourContextProviderFile' with the actual file name
+import { Container, Button } from "react-bootstrap";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,29 +18,31 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
-      {searchResults.length > 0 && (
-        <div>
-          <h3>Search Results:</h3>
-          <ul>
-            {searchResults.map((result, index) => (
-              <li key={index}>
-                <strong>{result.title}</strong> - Price: {result.price}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <Container>
+      <div className="Searchbar">
+        <form className="Search" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          <Button variant="secondary" type="submit">Search</Button>
+        </form>
+        {searchResults.length > 0 && (
+          <div>
+            <h3>Search Results:</h3>
+            <ul>
+              {searchResults.map((result, index) => (
+                <li key={index}>
+                  <strong>{result.title}</strong> - Price: {result.price}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </Container>
   );
 };
 

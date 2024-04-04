@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { APIContext } from "./BackendAPI";
+import { Container, Button } from "react-bootstrap";
 
 const Shop = () => {
   const { cart, setCart, products, setProducts, addOrder } =
@@ -40,27 +41,29 @@ const Shop = () => {
   };
 
   return (
-    <div>
-      <h2>Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id}>
-              <span>{item.title}</span>
-              <p>Price: {item.price}</p>
-              <p>Color: {item.selectedColor}</p>
-              <p>Size: {item.selectedSize}</p>
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
-              <br />
-              <br />
-              <button onClick={handlePurchase}>Purchase</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <Container>
+      <div>
+        <h2>Cart</h2>
+        {cart.length === 0 ? (
+          <p>Your cart is empty</p>
+        ) : (
+          <ul>
+            {cart.map((item) => (
+              <li key={item.id}>
+                <span>{item.title}</span>
+                <p>Price: {item.price}</p>
+                <p>Color: {item.selectedColor}</p>
+                <p>Size: {item.selectedSize}</p>
+                <Button variant="danger" onClick={() => removeFromCart(item.id)}>Remove</Button>
+                <br />
+                <br />
+                <Button variant="success" onClick={handlePurchase}>Purchase</Button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { APIContext } from "./BackendAPI"; // Replace 'YourContextProviderFile' with the actual file name
+import { Container, Button } from "react-bootstrap";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,9 @@ function Login() {
     try {
       await login(email, password); // Using login function from context provider
       alert("Login successful");
+      setEmail(""); // Reset email input
+      setPassword(""); // Reset password input
+      setMessage(""); // Clear message
     } catch (error) {
       console.error("Error:", error);
       setMessage("Error occurred during login");
@@ -30,27 +34,20 @@ function Login() {
     }
 
     try {
-      await register(email, password); // Using register function from context provider
+      await register(email, password);
       alert("User registered successfully");
+      setEmail("");
+      setPassword("");
+      setMessage("");
     } catch (error) {
       console.error("Error:", error);
       setMessage("Error occurred during registration");
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    alert("Logged out successfully");
-  }
-
   return (
-<div>
-      {user ? (
-        <div>
-          <p>Logged in as: {user.email}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
+    <Container>
+      <div>
         <div>
           <h2>Login</h2>
           <input
@@ -65,13 +62,14 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleLogin}>Login</button>
+          <Button variant="secondary" onClick={handleLogin}>Login</Button>
           <h2>Register</h2>
-          <button onClick={handleRegister}>Register</button>
+          <Button variant="secondary" onClick={handleRegister}>Register</Button>
         </div>
-      )}
-      <p>{message}</p>
-    </div>
+
+        <p>{message}</p>
+      </div>
+    </Container>
   );
 }
 
