@@ -43,6 +43,8 @@ const ProductDetails = ({ product, onClose }) => {
             </option>
           ))}
         </select>
+        <br />
+        <br />
         <p>Stock: {product.stock}</p>
         <Button variant="secondary" onClick={addToCartHandler}>
           Add to Cart

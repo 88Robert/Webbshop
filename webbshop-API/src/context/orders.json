@@ -174,5 +174,49 @@
       "selectedColor": "Black",
       "selectedSize": "S"
     }
+  ],
+  [
+    {
+      "id": 2,
+      "title": "Women's Hoodie",
+      "color": [
+        "Black",
+        "White",
+        "Blue",
+        "Grey"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": "400",
+      "stock": "19",
+      "selectedColor": "White",
+      "selectedSize": "L"
+    }
+  ],
+  [
+    {
+      "id": 5,
+      "title": "Sweat Pants",
+      "color": [
+        "Black",
+        "White",
+        "Blue",
+        "Grey"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": "150",
+      "stock": 22,
+      "selectedColor": "Black",
+      "selectedSize": "S"
+    }
   ]
 ]

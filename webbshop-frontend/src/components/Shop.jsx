@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { APIContext } from "./BackendAPI";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 const Shop = () => {
   const { cart, setCart, products, setProducts, addOrder } =
@@ -27,10 +27,8 @@ const Shop = () => {
     });
     console.log("Updated products:", updatedProducts);
 
-    // Update the products state with updated stock
     setProducts(updatedProducts);
 
-    // Update the products in localStorage with updated stock
     localStorage.setItem("products", JSON.stringify(updatedProducts));
 
     console.log("localStorage:", localStorage.getItem("products"));
@@ -39,30 +37,44 @@ const Shop = () => {
   const handlePurchase = () => {
     addOrder();
   };
-
   return (
     <Container>
-      <div>
-        <h2>Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty</p>
-        ) : (
-          <ul>
-            {cart.map((item) => (
-              <li key={item.id}>
-                <span>{item.title}</span>
-                <p>Price: {item.price}</p>
-                <p>Color: {item.selectedColor}</p>
-                <p>Size: {item.selectedSize}</p>
-                <Button variant="danger" onClick={() => removeFromCart(item.id)}>Remove</Button>
-                <br />
-                <br />
-                <Button variant="success" onClick={handlePurchase}>Purchase</Button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <Row className="justify-content-center">
+        {" "}
+        <Col xs={12} md={3}>
+          {" "}
+          <br />
+          <br />
+          <div>
+            <h2>Cart</h2>
+            {cart.length === 0 ? (
+              <p>Your cart is empty</p>
+            ) : (
+              <ul>
+                {cart.map((item) => (
+                  <li key={item.id}>
+                    <span>{item.title}</span>
+                    <p>Price: {item.price}</p>
+                    <p>Color: {item.selectedColor}</p>
+                    <p>Size: {item.selectedSize}</p>
+                    <Button
+                      variant="danger"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </Button>
+                    <br />
+                    <br />
+                    <Button variant="success" onClick={handlePurchase}>
+                      Purchase
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </Col>
+      </Row>
     </Container>
   );
 };

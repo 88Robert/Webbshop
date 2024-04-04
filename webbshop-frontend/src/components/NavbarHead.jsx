@@ -9,28 +9,30 @@ const NavbarHead = () => {
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-      <div><h1>Webbshop</h1></div>
-        <li>
+        <div>
+          <h1>Webbshop</h1>
+        </div>
+        <li style={{ listStyleType: "none" }}>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li style={{ listStyleType: "none" }}>
           <Link to="/Cart">Shop</Link>
         </li>
         {user ? (
           <>
-            <li>
+            <li style={{ listStyleType: "none" }}>
               <span>Welcome, {user.email}</span>
             </li>
-            <li>
+            <li style={{ listStyleType: "none" }}>
               <button onClick={logout}>Logout</button>
             </li>
           </>
         ) : (
-          <li>
+          <li style={{ listStyleType: "none" }}>
             <Link to="/Login">Login</Link>
           </li>
         )}
-  </Container>
+      </Container>
     </Navbar>
   );
 };

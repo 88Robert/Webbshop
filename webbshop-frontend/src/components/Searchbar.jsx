@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { APIContext } from "./BackendAPI"; // Replace 'YourContextProviderFile' with the actual file name
+import { APIContext } from "./BackendAPI";
 import { Container, Button } from "react-bootstrap";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const { products } = useContext(APIContext); // Accessing the search function from the context provider
+  const { products } = useContext(APIContext);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -15,6 +15,10 @@ const SearchBar = () => {
     event.preventDefault();
     const results = products.filter((pr) => pr.title.includes(searchTerm));
     setSearchResults(results);
+  };
+
+  const handleClose = () => {
+    setSearchResults([]);
   };
 
   return (
@@ -27,7 +31,9 @@ const SearchBar = () => {
             value={searchTerm}
             onChange={handleChange}
           />
-          <Button variant="secondary" type="submit">Search</Button>
+          <Button variant="secondary" type="submit">
+            Search
+          </Button>
         </form>
         {searchResults.length > 0 && (
           <div>
@@ -39,6 +45,9 @@ const SearchBar = () => {
                 </li>
               ))}
             </ul>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
           </div>
         )}
       </div>
