@@ -1,5 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
 
+
+/* Från min context provider hämtar jag allt från min Server.js, samt olika funktioner som jag hämtar härifrån, vissa saker kanske 
+jag inte skulle behövt lägga här men för att jag ska förstå Context Provider lag jag allt här. */
+
 export const APIContext = createContext();
 
 export const BackendAPI = ({ children }) => {
@@ -46,6 +50,11 @@ if (loggedInUser) {
     } catch (error) {
       console.error("Error fetching products:", error.message);
     }
+  };
+
+  const updateProducts = (updatedProducts) => {
+    setProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
   };
 
   const addToCart = (product, selectedColor, selectedSize) => {
@@ -144,6 +153,7 @@ if (loggedInUser) {
         setCart,
         addToCart,
         addOrder,
+        updateProducts,
       }}
     >
       {children}

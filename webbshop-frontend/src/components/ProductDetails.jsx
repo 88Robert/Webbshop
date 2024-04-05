@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { APIContext } from "./BackendAPI";
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 const ProductDetails = ({ product, onClose }) => {
   const { addToCart, setProducts } = useContext(APIContext);
@@ -24,7 +24,7 @@ const ProductDetails = ({ product, onClose }) => {
     <Container>
       <div>
         <h2>{product.title}</h2>
-        <p>Price: {product.price}</p>
+        <h4>Price: {product.price}</h4>
         <select value={selectedColor} onChange={handleColorChange}>
           <option value="">Select Color</option>
           {product.color.map((color) => (

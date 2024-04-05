@@ -3,6 +3,8 @@ import { APIContext } from "./BackendAPI";
 import { useContext } from "react";
 import { Navbar, Container } from "react-bootstrap";
 
+/* Använder context här också för att kunna hantera en logout som kommer upp på navbaren när man är inloggad */ 
+
 const NavbarHead = () => {
   const { user, logout } = useContext(APIContext);
 

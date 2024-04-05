@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { APIContext } from "./BackendAPI";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
+
+/* Här genom context providern, hanterar jag ordrar som skickas och uppdaterar orders.json som ligger i server.js i min Backend. */
+
 const Shop = () => {
   const { cart, setCart, products, setProducts, addOrder } =
     useContext(APIContext);

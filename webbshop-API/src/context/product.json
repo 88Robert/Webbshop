@@ -26,9 +26,9 @@
   },
   {
     "id": 4,
-    "title": "Kids' Backpack",
+    "title": "Backpack",
     "color": ["Black", "White", "Blue", "Grey"],
-    "size": ["One Size"],
+    "size": ["S", "M", "L", "XL"],
     "price": "200",
     "stock": "37"
   },

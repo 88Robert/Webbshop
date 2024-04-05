@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { APIContext } from "./BackendAPI"; 
 import { Container, Button, Row, Col } from "react-bootstrap";
 
+/* Hämtar hem context här för att kunna hantera loggin samt registrering, man loggas ut när man refreshar sidan */
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

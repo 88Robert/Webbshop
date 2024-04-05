@@ -218,5 +218,27 @@
       "selectedColor": "Black",
       "selectedSize": "S"
     }
+  ],
+  [
+    {
+      "id": 1,
+      "title": "Men's T-Shirt",
+      "color": [
+        "Black",
+        "White",
+        "Blue",
+        "Grey"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": "350",
+      "stock": 23,
+      "selectedColor": "Black",
+      "selectedSize": "S"
+    }
   ]
 ]

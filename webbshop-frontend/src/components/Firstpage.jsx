@@ -1,13 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import SearchBar from "./Searchbar";
 import ProductDetails from "./ProductDetails";
 import { APIContext } from "./BackendAPI";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Firstpage.css";
 
+/* Förstasidan son renderar ut all produkter via context provider */
+
 const Firstpage = () => {
-  const { products } = useContext(APIContext);
+  const { products, updateProducts } = useContext(APIContext);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {}, [products, updateProducts]);
 
   const handleClick = (product) => {
     setSelectedProduct(product);
@@ -41,14 +45,14 @@ const Firstpage = () => {
                 <strong>{product.title}</strong>
               </h2>
               <h3>BILD</h3>
-              <p>Price: {product.price}</p>
+              <h4>Price: {product.price}</h4>
             </div>
           </Col>
         ))}
       </Row>
       {selectedProduct && (
-        <Row>
-          <Col>
+        <Row className="justify-content-center">
+          <Col xs={12} md={3}>
             <div>
               <h2>Product Details</h2>
               <ProductDetails product={selectedProduct} onClose={handleClose} />

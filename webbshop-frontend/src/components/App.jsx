@@ -6,6 +6,9 @@ import NavbarHead from "./NavbarHead";
 import Shop from "./Shop";
 import { BackendAPI } from "./BackendAPI";
 
+/* Alla mina komponenter använder sig av Context Provider, för att få ta del av rätt info baserat på vilken komponent som behöver. 
+Jag har anvdvänt minimal vanlig css, bara som bakgrundsfärg och resten är bootstrap */
+
 function App() {
   return (
     <div>
